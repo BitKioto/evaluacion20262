@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using TecnoGasHogar.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar DbContext con SQLite
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
